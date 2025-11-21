@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  background-color: #ffd6e8;
+  font-family: Arial, sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: 32px;
+  color: #ff4b91;
+}
+
+.intro {
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.environment {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+  padding-top: 100px;
+}
+
+
+#bg {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+#anya {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 30%;
+}
+
+#peanut {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 21%;
+}
+
+#cloud {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12%;
+  opacity: 0.9;
+  animation: float 2s ease-in-out infinite alternate; 
+}
+
+@keyframes float {
+  from { transform: translateX(-50%) rotate(-3deg); }
+  to   { transform: translateX(-50%) rotate(3deg); }
+}
+

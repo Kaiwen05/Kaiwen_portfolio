@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Click To Add Image</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 2rem;
+      text-align: center;
+    }
+
+    #add-image-btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #ff8c69;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #add-image-btn:hover {
+      background-color: #ff6f42;
+    }
+
+    #image-container {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    #image-container img {
+      width: 120px;
+      height: auto;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+  <script src="ex05.js" defer></script>
+</head>
+<body>
+  <h1>Click the button to add a picture</h1>
+  <p>Each time you click the button, a cute picture will be added.</p>
+  <button id="add-image-btn">Click me to add a picture</button>
+  <section id="image-container" aria-live="polite"></section>
+</body>
+</html>

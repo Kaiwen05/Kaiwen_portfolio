@@ -1,0 +1,25 @@
+.test-div {
+    background: rgba(77, 189, 249, 0.694);
+    padding: 20px;
+    margin: 20px; 
+}
+
+#s {
+    color: rgba(249, 77, 77, 0.694);
+}
+
+.test-div h2 {
+color: plum;
+}
+p {
+    background: rgba(0, 0, 255, 0.285)
+}
+.special{
+    background: rgba(255, 127, 127, 0.564)
+}
+.test-div:hover {
+    background: yellowgreen;
+}
+h1, h2, h3, h4 {
+    test-decoration: underline;
+}
