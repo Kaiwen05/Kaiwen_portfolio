@@ -252,3 +252,41 @@ body {
 }
 
 
+/* contact section in hero */
+.contact-box {
+  margin-top: 1.4rem;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 1rem 1.3rem;
+  border-radius: 16px;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(255, 180, 240, 0.25);
+}
+
+.contact-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.contact-item {
+  font-size: 0.86rem;
+  color: #555;
+  margin: 0.25rem 0;
+}
+
+.contact-item span {
+  font-weight: 600;
+  color: #444;
+}
+
+.contact-item a {
+  color: #cc66d6;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #ff7de5;
+}
