@@ -4,4 +4,34 @@
   background: pink;
   border-radius: 20px;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  color: #2c173c;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.name-display {
+  margin: 10px 0 6px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #3a1c4c;
+}
+
+.shake {
+  animation: wobble 0.5s ease;
+}
+
+@keyframes wobble {
+  0% { transform: translateX(0); }
+  15% { transform: translateX(-8px); }
+  30% { transform: translateX(8px); }
+  45% { transform: translateX(-6px); }
+  60% { transform: translateX(6px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
 }
