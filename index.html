@@ -1,53 +1,226 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kaiwen Fan | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- use site.css -->
+  <link rel="stylesheet" href="site.css" />
+</head>
 
-    <head>
-        <title>Kaiwen's Portfolio Homepage</title>
-        <link href="site.css" rel="stylesheet" type="text/css" />
-    </head>
+<body>
 
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
 
-    <body>
-        
-        <h1>This is Kaiwen's ART101 website homepage</h1>
-        <div id="introduction">
-         <h2>Welcome!</h2>
-   
-         <p>
-             Kaiwen Fan (She/Her) is a ...
-            </p>
-        </div>        
-       
-        <p>Hi everyone! My name is Kaiwen. I go by she/her. I am 3rd year majoring in ARTG. I don’t have any coding experience or programming knowledge. I feel the challenges and so excited to learn new things!</p>
-        <h2>This is totally me</h2>
-        <img id="mypic" src="exercises/mee.png">
-        <h2>My journey</h2>
-        <div class="navigation">
-        <ol>
-            <h4>Links to my follow-along excercises</h4>
-            <li><a href="exercises/ex01.html">exercise 1</a></li>
-            <li><a href="exercises/ex02.html">exercise 2</a></li>
-            <li><a href="exercises/ex03.html">exercise 3</a></li>
-            <li><a href="exercises/ex04.html">exercise 4</a></li>
-            <li><a href="exercises/ex05.html">exercise 5</a></li>
-            <li><a href="environ/env07.html">exercise 7</a></li>
-            <li><a href="environ/env08.html">exercise 8</a></li>
+      <div class="hero-text-block">
+        <p class="hero-label">Portfolio of</p>
+        <h1 class="hero-name">Kaiwen Fan</h1>
+        <p class="hero-tagline">Games · Art · Web Design</p>
 
+        <p class="hero-intro">
+          I design playful game worlds, create paintings and calligraphy,
+          and build clean, interactive websites.
+        </p>
 
-        </ol>
-        <ol>
-            <h4>Links to my follow-along Labs</h4 >
-            <li><a href="environ/env01.html">Lab 2</a></li>
-            <li><a href="environ/env02.html">Lab 3</a></li>
-            <li><a href="environ/env03.html">Lab 4</a></li>
-            <li><a href="environ/env04.html">Lab 5</a></li>
-            <li><a href="exercises/lab7.html">Lab 7</a></li>
-            <li><a href="exercises/lab8.html">Lab 8</a></li>
-
-        </ol>
+        <div class="hero-tags">
+          <span>Game Design</span>
+          <span>Visual Art</span>
+          <span>Front-end</span>
         </div>
+      </div>
 
-        <h3>More content is still being refined... Stay tuned!</h3>
-    </body>
+      <!-- small portrait -->
+      <div class="hero-photo-block">
+        <img src="mee.png" class="profile-photo" alt="Kaiwen portrait" />
+      </div>
 
+    </div>
+  </header>
 
+  <!-- CATEGORY BUTTONS -->
+  <section class="section-nav">
+    <h2 class="section-title">Work Categories</h2>
+    <p class="section-subtitle">Pick a category to see more details.</p>
+
+    <div class="nav-buttons">
+      <button class="nav-btn active" data-target="panel-games">🎮 Games</button>
+      <button class="nav-btn" data-target="panel-art">🖌️ Art</button>
+      <button class="nav-btn" data-target="panel-web">🌐 Web</button>
+    </div>
+  </section>
+
+  <!-- PANELS -->
+  <main class="section-panels">
+
+    <!-- GAMES -->
+    <section class="panel show" id="panel-games">
+      <h3>Games & Playable Media</h3>
+      <p class="panel-intro">
+        Group projects and solo experiments in game and interactive narrative design.
+      </p>
+
+      <div class="panel-grid">
+        <article class="panel-card">
+          <h4>Echoes Beyond the Gate</h4>
+          <p class="panel-meta">Narrative game · Solo project</p>
+
+          <p class="panel-desc">
+            A dreamlike tomb-exploration narrative game focusing on atmosphere and branching choices.
+          </p>
+
+           <a class="panel-link" 
+     href="https://your-link-here.com" 
+     target="_blank">
+     View project →
+  </a>
+        </article>
+
+        <article class="panel-card">
+          <h4>The Pack</h4>
+          <p class="panel-meta">Systems design · Writing</p>
+          <p class="panel-desc">
+            A multi-chapter story about animal companions with abilities and branching dialogue.
+          </p>
+
+           <a class="panel-link" 
+     href="https://your-link-here.com" 
+     target="_blank">
+     View project →
+  </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ART -->
+    <section class="panel" id="panel-art">
+      <h3>Art, Painting & Calligraphy</h3>
+      <p class="panel-intro">
+        Selected works from sketchbooks, digital paintings, and Chinese calligraphy.
+      </p>
+
+      <div class="panel-grid">
+        <article class="panel-card">
+          <h4>Daily Sketch</h4>
+          <p class="panel-meta">Digital paintings·Hand paintings </p>
+          
+
+           <a class="panel-link" href="artwork/art.html" >
+     View Arts →
+  </a>
+        </article>
+
+        <article class="panel-card">
+          <h4>Ink Landscape Series</h4>
+          <p class="panel-meta">Digital ink · Personal</p>
+          <p class="panel-desc">
+            Atmospheric landscapes exploring space and mountain layering.
+          </p>
+
+           <a class="panel-link" 
+     href="https://your-link-here.com" 
+     target="_blank">
+     View project →
+  </a>
+        </article>
+
+        <article class="panel-card">
+          <h4>Calligraphy Studies</h4>
+          <p class="panel-meta">Brush practice</p>
+          <p class="panel-desc">
+            Practice pages focusing on rhythm and stroke structure.
+          </p>
+
+           <a class="panel-link" 
+     href="https://your-link-here.com" 
+     target="_blank">
+     View project →
+  </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- WEB -->
+    <section class="panel" id="panel-web">
+      <h3>Web & Interaction Design</h3>
+      <p class="panel-intro">
+        Small websites and UI experiments built with HTML, CSS and JavaScript.
+      </p>
+
+      <div class="panel-grid">
+        <article class="panel-card">
+          <h4>Mini Scene: Human & Nature</h4>
+          <p class="panel-meta">UI Prototype</p>
+          <p class="panel-desc">
+           An interactive mini-scene that playfully explores the relationship between humans and nature through simple hover and click reactions.
+          </p>
+
+           <a class="panel-link" href="environ/env07.html">
+     View project →
+  </a>
+        </article>
+
+        <article class="panel-card">
+          <h4>The Little Rename Creature</h4>
+          <p class="panel-meta">Micro-interaction Experiment</p>
+          <p class="panel-desc">
+            Give the little box a name and watch it react with personality, color changes, and tiny animations.
+          </p>
+
+           <a class="panel-link" 
+     href="environ/env08.html">
+     View project →
+  </a>
+        </article>
+
+         <article class="panel-card">
+          <h4>Anya's Story</h4>
+          <p class="panel-meta">Static Mood Prototype</p>
+          <p class="panel-desc">
+            A small tribute to my favorite anime character, featuring a simple family portrait of Anya.
+          </p>
+
+           <a class="panel-link" 
+     href="environ/env02.html">
+     1.0 →
+  </a>
+  <p class="panel-meta">Interactive Expansion</p>
+          <p class="panel-desc">
+            A follow-up piece sharing more details about Anya, including key traits and a hint of her background story.
+          </p>
+  <a class="panel-link" 
+     href="environ/env04.html">
+     2.0 →
+  </a>
+        </article>
+
+         <article class="panel-card">
+          <h4>Selected Exercises</h4>
+          <p class="panel-desc">Some selected exercises from my ART101 UCSC class.</p>
+          
+   <a class="panel-link" href="exercises/ex03.html">
+     Division and color changes →
+  </a>
+  <a class="panel-link" href="exercises/ex04.html">
+     Button and background color changes →
+  </a>
+  <a class="panel-link" href="exercises/lab7.html">
+     Hidden and expanded →
+  </a>
+        </article>
+      </div>
+    </section>
+
+    
+
+  </main>
+
+  <footer class="footer">
+    © 2025 Kaiwen Fan
+  </footer>
+
+  <!-- use site.js -->
+  <script src="site.js"></script>
+</body>
 </html>
