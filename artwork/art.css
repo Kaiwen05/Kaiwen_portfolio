@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #fffafb;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Hero */
+.art-hero {
+  padding: 3rem 1.5rem 2rem;
+  background: linear-gradient(135deg, #fce1ff 0%, #e3f0ff 45%, #d9f6ff 100%);
+}
+
+.art-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.art-hero-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  opacity: 0.7;
+}
+
+.art-hero-title {
+  font-size: 2.2rem;
+  margin-top: 0.2rem;
+  color: #333;
+}
+
+.art-hero-text {
+  margin-top: 0.8rem;
+  max-width: 34rem;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Filters */
+.art-filter-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.8rem 1.5rem 0.8rem;
+}
+
+.art-filter-title {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.art-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.art-filter-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 1.4rem;
+  font-size: 0.86rem;
+  background: #ffe9ff;
+  color: #444;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(255, 178, 244, 0.35);
+  transition: 0.15s ease;
+}
+
+.art-filter-btn:hover {
+  transform: translateY(-1px);
+  background: #ffd9ff;
+}
+
+.art-filter-btn.active {
+  background: #ffc9ff;
+  box-shadow: 0 4px 10px rgba(255, 160, 240, 0.4);
+}
+
+/* Gallery grid */
+.art-gallery {
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem 2.5rem;
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.art-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 2px solid #ffe8fb;
+  box-shadow: 0 4px 12px rgba(255, 190, 240, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: 0.18s ease;
+}
+
+.art-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.art-card figcaption {
+  padding: 0.85rem 1rem 1.1rem;
+}
+
+.art-card h3 {
+  font-size: 0.98rem;
+  color: #333;
+}
+
+.art-card p {
+  font-size: 0.86rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+.art-card:hover {
+  transform: translateY(-4px);
+  border-color: #ffc6f5;
+  box-shadow: 0 6px 18px rgba(255, 160, 240, 0.35);
+}
+
+/* Footer */
+.art-footer {
+  text-align: center;
+  padding: 1.5rem 1rem 2.2rem;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.back-link {
+  color: #cc66d6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .art-hero {
+    padding: 2.4rem 1.3rem 1.8rem;
+  }
+
+  .art-gallery {
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+  }
+}

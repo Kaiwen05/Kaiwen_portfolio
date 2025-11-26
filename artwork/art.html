@@ -1,1 +1,155 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Artwork Gallery | Kaiwen Fan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- art page styles -->
+  <link rel="stylesheet" href="art.css" />
+</head>
+<body>
 
+  <!-- Top header / hero -->
+  <header class="art-hero">
+    <div class="art-hero-inner">
+      <div>
+        <p class="art-hero-label">Artwork Archive</p>
+        <h1 class="art-hero-title">Creative Corner</h1>
+        <p class="art-hero-text">
+          A curated space for my drawings, paintings, calligraphy, 3D studies,
+          photography, and small experiments.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category filter buttons -->
+  <section class="art-filter-section">
+    <h2 class="art-filter-title">Browse by category</h2>
+    <div class="art-filters">
+      <button class="art-filter-btn active" data-filter="all">All</button>
+      <button class="art-filter-btn" data-filter="sketch">Sketches</button>
+      <button class="art-filter-btn" data-filter="chinese">Chinese Painting & Calligraphy</button>
+      <button class="art-filter-btn" data-filter="3d">3D Studies</button>
+      <button class="art-filter-btn" data-filter="tufting">Tufting / Textile</button>
+      <button class="art-filter-btn" data-filter="photo">Photography</button>
+      <button class="art-filter-btn" data-filter="other">Other Experiments</button>
+    </div>
+  </section>
+
+  <!-- Main gallery -->
+  <main class="art-gallery">
+
+    <!-- Example: Sketches (selfwork folder) -->
+    <figure class="art-card" data-category="sketch">
+      <img src="selfwork/sketch11.JPG" alt="Sketch figure study" />
+      <figcaption>
+        <h3>Figure Sketch</h3>
+        <p>Quick pencil study focusing on gesture and rhythm.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="art-card" data-category="sketch">
+      <img src="selfwork/sketch20.JPG" alt="Sketch character pose" />
+      <figcaption>
+        <h3>Character Pose Study</h3>
+        <p>Loose sketch exploring character personality through pose.</p>
+      </figcaption>
+    </figure>
+
+    <!-- Example: Chinese painting / calligraphy -->
+    <figure class="art-card" data-category="chinese">
+      <img src="Chinese/chinese_painting_river.JPG" alt="Chinese ink landscape" />
+      <figcaption>
+        <h3>Ink Landscape</h3>
+        <p>Chinese landscape painting inspired by shanshui compositions.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="art-card" data-category="chinese">
+      <img src="Chinese/chinese_chaligraph_01.JPG" alt="Chinese calligraphy" />
+      <figcaption>
+        <h3>Calligraphy Practice</h3>
+        <p>Calligraphy study focusing on stroke structure and rhythm.</p>
+      </figcaption>
+    </figure>
+
+    <!-- Example: 3D model studies (ARTG118_3DMdl) -->
+    <figure class="art-card" data-category="3d">
+      <img src="ARTG118_3DMdl/正側圖.png" alt="3D character front view" />
+      <figcaption>
+        <h3>3D Character Turnaround</h3>
+        <p>Front and side view concept for a 3D character model.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="art-card" data-category="3d">
+      <img src="ARTG118_3DMdl/A1_1.png" alt="3D character render" />
+      <figcaption>
+        <h3>Character Render Study</h3>
+        <p>Lighting and material test from my 3D modeling coursework.</p>
+      </figcaption>
+    </figure>
+
+    <!-- Example: Tufting / textile -->
+    <figure class="art-card" data-category="tufting">
+      <img src="selfwork/tufting_burger_final.JPG" alt="Tufting burger piece" />
+      <figcaption>
+        <h3>Tufted Burger</h3>
+        <p>A playful tufting piece translating a burger into soft texture.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="art-card" data-category="tufting">
+      <img src="selfwork/tufting_eggs.JPG" alt="Tufting eggs piece" />
+      <figcaption>
+        <h3>Sunny Side Up</h3>
+        <p>Experimental tufting work using simple shapes and bold colors.</p>
+      </figcaption>
+    </figure>
+
+    <!-- Example: Photography -->
+    <figure class="art-card" data-category="photo">
+      <img src="selfwork/IMG_3643.PNG" alt="Photography study 1" />
+      <figcaption>
+        <h3>Portrait Study</h3>
+        <p>Photo experiment focusing on lighting and mood.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="art-card" data-category="photo">
+      <img src="selfwork/Time_lapse_photogr.JPG" alt="Time-lapse photo" />
+      <figcaption>
+        <h3>Time-lapse Moment</h3>
+        <p>Photography piece capturing motion over time.</p>
+      </figcaption>
+    </figure>
+
+    <!-- Example: Other experiments (like lychee-skin lotus) -->
+    <figure class="art-card" data-category="other">
+      <img src="selfwork/Lychee.JPG" alt="Lychee-skin lotus" />
+      <figcaption>
+        <h3>Lychee-skin Lotus</h3>
+        <p>A natural-material sculpture made from lychee peel and photographed as a tiny still life.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="art-card" data-category="other">
+      <img src="selfwork/water_lily.JPG" alt="Water lily study" />
+      <figcaption>
+        <h3>Water Lily Study</h3>
+        <p>Color and composition study inspired by floating water lilies.</p>
+      </figcaption>
+    </figure>
+
+    <!-- You can keep adding more <figure> blocks following the same pattern -->
+
+  </main>
+
+  <footer class="art-footer">
+    <a href="../index.html" class="back-link">← Back to portfolio</a>
+  </footer>
+
+  <script src="art.js"></script>
+</body>
+</html>
