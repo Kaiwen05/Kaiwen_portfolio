@@ -40,3 +40,5 @@ document.addEventListener("click", (event) => {
     sparkle.remove();
   }, 700);
 });
+
+
