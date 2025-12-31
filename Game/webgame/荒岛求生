@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Island Survival · Level 1</title>
+<style>
+  :root { --bg:#0e1a22; --panel:#111a22; --ink:#e7f1f7; --muted:#97b2c1; }
+  html,body { margin:0; height:100%; background:linear-gradient(160deg,#071018,#102331); color:var(--ink); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto; }
+  .wrap { max-width:900px; margin:auto; padding:20px; }
+  header { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .badge { background:#1d3242; padding:6px 10px; border-radius:10px; font-size:14px; color:var(--muted); }
+  .inventory { display:flex; gap:8px; flex-wrap:wrap; }
+  .chip { background:#152532; border:1px solid #284155; padding:4px 10px; border-radius:999px; }
+  .card { background:rgba(16,30,42,.8); border:1px solid #243a4d; border-radius:14px; padding:18px; margin:16px 0; box-shadow:0 10px 40px rgba(0,0,0,.25); }
+  .title { font-weight:700; font-size:18px; }
+  a.link { color:#86d0ff; text-decoration:none; border-bottom:1px dashed #86d0ff; }
+  a.link:hover { opacity:.9; }
+  .btn { cursor:pointer; border:1px solid #2e546f; background:#163043; color:#dff2ff; padding:10px 14px; border-radius:10px; }
+  .btn[disabled] { opacity:.5; cursor:not-allowed }
+  .grid { display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+  .puzzle-grid { display:grid; grid-template-columns:repeat(4,48px); gap:10px; justify-content:center; margin:10px 0; }
+  .glyph { width:48px; height:48px; display:grid; place-items:center; border:1px solid #2b465b; border-radius:8px; user-select:none; cursor:pointer; }
+  .glyph.active { outline:2px solid #86d0ff; }
+  .log { white-space:pre-wrap; color:#cbe6ff; background:#0c1720; border-radius:10px; padding:10px; border:1px solid #213a4c; max-height:180px; overflow:auto; }
+  footer { color:#88a9ba; font-size:13px; text-align:center; margin-top:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="badge">⏳ Day <span id="day">1</span> • Energy <span id="energy">10</span></div>
+    <div class="badge">🎒 Inventory</div>
+    <div class="inventory" id="inv"></div>
+    <div class="badge">🎯 Goal: Build the Signal Bonfire</div>
+  </header>
+
+  <section id="scene" class="card"></section>
+
+  <section class="card">
+    <div class="title">Action Log</div>
+    <div id="log" class="log"></div>
+  </section>
+
+  <footer>Island Survival · Level 1 (Prototype)</footer>
+</div>
+
+<script>
+/* ---------- State ---------- */
+const state = {
+  day: 1,
+  energy: 10,
+  inv: { Wood:0, Rope:0, Flint:0 },
+  flags: { sawWreck:false, metCarvings:false, fireBuilt:false, woodMiniDone:false },
+  location: 'intro'
+};
+/* ---------- Utils ---------- */
+const $ = sel => document.querySelector(sel);
+function log(t){ const el = $('#log'); el.textContent += (t+'\n'); el.scrollTop = el.scrollHeight; }
+function renderHUD(){
+  $('#day').textContent = state.day;
+  $('#energy').textContent = state.energy;
+  const inv = $('#inv'); inv.innerHTML = '';
+  Object.entries(state.inv).forEach(([k,v])=>{
+    const chip = document.createElement('div'); chip.className='chip'; chip.textContent = `${k} × ${v}`; inv.appendChild(chip);
+  });
+}
+function spendEnergy(n=1){
+  if(state.energy < n){ log('⚠️ You are exhausted. You need to rest (end the day).'); return false; }
+  state.energy -= n; renderHUD(); return true;
+}
+function endDay(){
+  state.day += 1;
+  state.energy = Math.min(10, state.energy + 5);
+  log(`🌘 Night falls. Day ${state.day} begins. Energy restored to ${state.energy}.`);
+  renderHUD();
+}
+/* ---------- Scenes ---------- */
+const S = {
+  intro(){
+    html(`
+      <div class="title">🌊 Beach | Awakening</div>
+      <p>You wake up on the shore after the crash. Wreckage lies behind you, dense jungle ahead. You must gather resources and raise a signal fire before sunset.</p>
+      <div class="grid">
+        <button class="btn" data-goto="wreck">Check the wreckage</button>
+        <button class="btn" data-goto="shore">Search the shoreline</button>
+        <button class="btn" data-goto="jungle">Enter the jungle</button>
+      </div>
+    `);
+  },
+  wreck(){
+    if(!spendEnergy(1)) return;
+    state.flags.sawWreck = true;
+    html(`
+      <div class="title">✈️ Wreckage</div>
+      <p>You find a length of <b>Rope</b> under the seatbelts and a torn safety card.</p>
+      <button class="btn" id="takeRope">Take Rope</button>
+      <button class="btn" data-goto="intro">Back to the beach</button>
+    `);
+    $('#takeRope').onclick = ()=>{
+      if(state.inv.Rope===0){ state.inv.Rope=1; log('🎒 Gained Rope ×1'); renderHUD();}
+      S.intro();
+    };
+  },
+  shore(){
+    if(!spendEnergy(1)) return;
+    html(`
+      <div class="title">🏝️ Shoreline</div>
+      <p>The tide reveals dark pebbles. They spark when struck. Could serve as <b>Flint</b>.</p>
+      <div class="grid">
+        <button class="btn" id="takeFlint">Pick up Flint</button>
+        <button class="btn" data-goto="intro">Back to beach center</button>
+      </div>
+    `);
+    $('#takeFlint').onclick = ()=>{
+      if(state.inv.Flint===0){ state.inv.Flint=1; log('🎒 Gained Flint ×1'); renderHUD(); }
+    };
+  },
+  jungle(){
+    if(!spendEnergy(1)) return;
+    html(`
+      <div class="title">🌿 Jungle Edge</div>
+      <p>Two paths: left toward a vine-covered cave; right toward small trees you could chop.</p>
+      <div class="grid">
+        <button class="btn" data-goto="cave">Explore the cave carvings</button>
+        <button class="btn" data-goto="wood">Chop wood</button>
+        <button class="btn" data-goto="intro">Return to beach</button>
+      </div>
+    `);
+  },
+  /* Mini-game: Chop wood */
+  wood(){
+    if(state.flags.woodMiniDone){
+      html(`
+        <div class="title">🪵 Chopping Complete</div>
+        <p>You already gathered enough logs. Maybe return to the <a href="#" class="link" data-goto="fire">signal fire</a>.</p>
+        <button class="btn" data-goto="jungle">Back</button>
+      `); return;
+    }
+    if(!spendEnergy(1)) return;
+    let count=0, target=15, secs=8;
+    html(`
+      <div class="title">🪓 Chop Wood (click ${target} times in ${secs}s)</div>
+      <p>Quickly click to gather wood!</p>
+      <div style="display:flex; align-items:center; gap:12px; margin:8px 0">
+        <button class="btn" id="chop">Chop! (<span id="c">0</span>)</button>
+        <div class="badge">⏱️ <span id="t">${secs}</span>s</div>
+      </div>
+      <button class="btn" data-goto="jungle">Give up</button>
+    `);
+    const timer = setInterval(()=>{
+      secs--; $('#t').textContent = secs;
+      if(secs<=0){ clearInterval(timer); finish(); }
+    },1000);
+    $('#chop').onclick = ()=>{
+      count++; $('#c').textContent = count;
+      if(count>=target){ clearInterval(timer); finish(true); }
+    };
+    function finish(success=false){
+      $('#chop').disabled = true;
+      if(success){
+        const gain = 3;
+        state.inv.Wood += gain; state.flags.woodMiniDone = true; renderHUD();
+        log(`🪵 Success! Collected Wood ×${gain}`);
+      }else{
+        log('😵‍💫 Not enough chops. Try again later.');
+      }
+    }
+  },
+  /* Puzzle: Cave carvings */
+  cave(){
+    if(!spendEnergy(1)) return;
+    state.flags.metCarvings = true;
+    const answer = ['△','○','□','★'];
+    let seq = [];
+    html(`
+      <div class="title">🕳️ Cave Carvings</div>
+      <p>Four symbols on the wall. The inscription reads: “Tide → Moon → Shelter → Fire.” Click in correct order.</p>
+      <div class="puzzle-grid">
+        ${['△','□','○','★'].map(g=>`<div class="glyph" data-g="${g}">${g}</div>`).join('')}
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin:8px 0">
+        <button class="btn" id="reset">Reset</button>
+        <button class="btn" data-goto="jungle">Back</button>
+      </div>
+    `);
+    $$('.glyph').forEach(el=>{
+      el.onclick = ()=>{
+        if(seq.length>=4) return;
+        seq.push(el.dataset.g);
+        el.classList.add('active');
+        if(seq.length===4){
+          setTimeout(()=>{
+            if(JSON.stringify(seq)===JSON.stringify(answer)){
+              if(state.inv.Flint===0){ state.inv.Flint=1; renderHUD(); }
+              log('✨ Mechanism clicks. You gain Flint ×1');
+            }else{
+              log('🔒 Wrong sequence. Nothing happens.');
+            }
+          },150);
+        }
+      };
+    });
+    $('#reset').onclick = ()=>{ seq.length=0; $$('.glyph').forEach(e=>e.classList.remove('active')); };
+    function $$ (sel){ return Array.from(document.querySelectorAll(sel)); }
+  },
+  /* Build fire (win condition) */
+  fire(){
+    html(`
+      <div class="title">🔥 Signal Fire</div>
+      <p>Requires: Wood ×3, Rope ×1, Flint ×1. Current: Wood ×${state.inv.Wood}, Rope ×${state.inv.Rope}, Flint ×${state.inv.Flint}</p>
+      <div class="grid">
+        <button class="btn" id="build">Build and light</button>
+        <button class="btn" data-goto="intro">Back to beach</button>
+        <button class="btn" id="rest">Rest for the day</button>
+      </div>
+    `);
+    $('#build').onclick = ()=>{
+      if(state.inv.Wood>=3 && state.inv.Rope>=1 && state.inv.Flint>=1){
+        if(!spendEnergy(1)) return;
+        state.inv.Wood-=3; state.inv.Rope-=1; state.inv.Flint-=1; renderHUD();
+        state.flags.fireBuilt = true;
+        log('🔥 You raise a column of black smoke!');
+        win();
+      }else{
+        log('🧱 Not enough resources.');
+      }
+    };
+    $('#rest').onclick = endDay;
+  }
+};
+/* ---------- Helpers ---------- */
+function html(inner){
+  const el = $('#scene'); el.innerHTML = inner;
+  el.querySelectorAll('[data-goto]').forEach(b=>{
+    b.addEventListener('click', ()=>{ go(b.getAttribute('data-goto')); });
+  });
+}
+function go(key){ state.location = key; (S[key]||S.intro)(); }
+function win(){
+  html(`
+    <div class="title">🟡 Success</div>
+    <p>Engines roar in the distance. Your smoke rises high. Level 1 complete!</p>
+    <div class="grid">
+      <button class="btn" onclick="location.reload()">Play again</button>
+    </div>
+  `);
+}
+/* ---------- Start ---------- */
+renderHUD();
+S.intro();
+</script>
+</body>
+</html>
